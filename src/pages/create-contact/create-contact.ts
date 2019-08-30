@@ -21,14 +21,21 @@ export class CreateContactPage {
     this.model = new Contact();
     this.model.name = 'Novo contato';
     this.model.gender = 'male';
+    this.model.birthday = '2019-08-29';
+    this.model.employed = false;
+    this.model.salary = '1000';
 
   }
 
   createContact(){
     var data = {
-      'contact': {
+        'contact': {
         'name': this.model.name,
-        'gender': this.model.gender
+        'gender': this.model.gender,
+        'birthday': this.model.birthday,
+        'employed': this.model.employed,
+        'salary': this.model.Salary
+
       }
     };
     this.contactsProvider.addContact(data)
