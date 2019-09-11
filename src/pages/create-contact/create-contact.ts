@@ -34,7 +34,7 @@ export class CreateContactPage {
         'gender': this.model.gender,
         'birthday': this.model.birthday,
         'employed': this.model.employed,
-        'salary': this.model.Salary
+        'salary': this.model.salary
 
       }
     };
