@@ -1,4 +1,4 @@
-webpackJsonp([3],{
+webpackJsonp([4],{
 
 /***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -67,9 +67,21 @@ var ContactsListPage = /** @class */ (function () {
             _this.toast.create({ message: error.error }).present();
         });
     };
+    ContactsListPage.prototype.openEditContact = function (id) {
+        var _this = this;
+        this.contactsProvider.getContact(id)
+            .then(function (result) {
+            _this.navCtrl.push('ContactEditPage', {
+                contact: result
+            });
+        })
+            .catch(function (error) {
+            _this.toast.create({ message: error.error }).present();
+        });
+    };
     ContactsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contacts-list',template:/*ion-inline-start:"/var/www/contacts/src/pages/contacts-list/contacts-list.html"*/'<!--\n  Generated template for the ContactsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>ContactsList</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list inset>\n    <ion-item-sliding *ngFor="let contact of contacts">\n      <ion-item (click)="openContact(contact.id)">\n        <h2>{{contact.name}}</h2>\n        <p>{{contact.gender}}</p>\n      </ion-item>\n    </ion-item-sliding>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/var/www/contacts/src/pages/contacts-list/contacts-list.html"*/,
+            selector: 'page-contacts-list',template:/*ion-inline-start:"/var/www/contacts/src/pages/contacts-list/contacts-list.html"*/'<!--\n  Generated template for the ContactsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>ContactsList</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list inset>\n    <ion-item-sliding *ngFor="let contact of contacts">\n      <ion-item (click)="openContact(contact.id)">\n        <h2>{{contact.name}}</h2>\n        <p>{{contact.gender}}</p>\n      </ion-item>\n\n      <ion-item-options side="left">\n        <button ion-button color="danger" (click)="deleteContact(contact)">\n          <ion-icon name="trash"></ion-icon>\n          Excluir\n        </button>\n        <button ion-button color="primary" (click)="openEditContact(contact.id)">\n            <ion-icon name="create"></ion-icon>\n            Editar\n          </button>\n        </ion-item-options>\n    </ion-item-sliding>\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/var/www/contacts/src/pages/contacts-list/contacts-list.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_contacts_contacts__["a" /* ContactsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_contacts_contacts__["a" /* ContactsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */]) === "function" && _d || Object])
     ], ContactsListPage);
@@ -148,10 +160,9 @@ var CreateContactPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-create-contact',template:/*ion-inline-start:"/var/www/contacts/src/pages/create-contact/create-contact.html"*/'<!--\n  Generated template for the CreateContactPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>create-contact</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n\n    <ion-item>\n      <ion-label stacked>Name</ion-label>\n      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Gender</ion-label>\n      <ion-input type="text" name="gender" [(ngModel)]="model.gender"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Birthday</ion-label>\n      <ion-datetime name="birthday" displayFormat="DD/MM/YYYY" [(ngModel)]="model.birthday"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Employed</ion-label>\n      <ion-checkbox name="employed" [(ngModel)]="model.employed"></ion-checkbox>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Salary</ion-label>\n      <ion-input type="text" name="salary" [(ngModel)]="model.salary"></ion-input>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n<button ion-button block (click)="createContact()">\n  Criar contato\n</button>\n\n</ion-content>\n'/*ion-inline-end:"/var/www/contacts/src/pages/create-contact/create-contact.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_contacts_contacts__["a" /* ContactsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_contacts_contacts__["a" /* ContactsProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_contacts_contacts__["a" /* ContactsProvider */]])
     ], CreateContactPage);
     return CreateContactPage;
-    var _a, _b, _c, _d;
 }());
 
 var Contact = /** @class */ (function () {
@@ -187,15 +198,19 @@ webpackEmptyAsyncContext.id = 113;
 var map = {
 	"../pages/contact-details/contact-details.module": [
 		281,
+		1
+	],
+	"../pages/contact-edit/contact-edit.module": [
+		282,
 		0
 	],
 	"../pages/contacts-list/contacts-list.module": [
-		282,
-		2
+		283,
+		3
 	],
 	"../pages/create-contact/create-contact.module": [
-		283,
-		1
+		284,
+		2
 	]
 };
 function webpackAsyncContext(req) {
@@ -441,6 +456,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/contact-details/contact-details.module#ContactDetailsPageModule', name: 'ContactDetailsPage', segment: 'contact-details', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/contact-edit/contact-edit.module#ContactEditPageModule', name: 'ContactEditPage', segment: 'contact-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contacts-list/contacts-list.module#ContactsListPageModule', name: 'ContactsListPage', segment: 'contacts-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/create-contact/create-contact.module#CreateContactPageModule', name: 'CreateContactPage', segment: 'create-contact', priority: 'low', defaultHistory: [] }
                     ]
@@ -592,10 +608,9 @@ var ContactsProvider = /** @class */ (function () {
     };
     ContactsProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], ContactsProvider);
     return ContactsProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=contacts.js.map

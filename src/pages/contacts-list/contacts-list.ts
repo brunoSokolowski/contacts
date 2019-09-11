@@ -35,25 +35,37 @@ export class ContactsListPage {
   }
 
   openContact(id: number) {
-  this.contactsProvider.getContact(id)
-  .then((result: any) => {
-    this.navCtrl.push('ContactDetailsPage',  {
-      contact: result
+    this.contactsProvider.getContact(id)
+    .then((result: any) => {
+      this.navCtrl.push('ContactDetailsPage',  {
+        contact: result
+      });
+    })
+    .catch((error: any) => {
+      this.toast.create({ message: error.error }).present();
     });
-  })
-  .catch((error: any) => {
-    this.toast.create({ message: error.error }).present();
-  });
   }
 
   deleteContact(contact: any) {
-  this.contactsProvider.destroyContact(contact.id)
-  .then((result: any) => {
-    this.toast.create({ message: 'Excluído!' , duration: 3000}).present();
-  })
-  .catch((error: any) => {
-    this.toast.create({ message: error.error }).present();
-  });
+    this.contactsProvider.destroyContact(contact.id)
+    .then((result: any) => {
+      this.toast.create({ message: 'Excluído!' , duration: 3000}).present();
+    })
+    .catch((error: any) => {
+      this.toast.create({ message: error.error }).present();
+    });
+  }
+
+  openEditContact(id: number) {
+    this.contactsProvider.getContact(id)
+    .then((result: any) => {
+      this.navCtrl.push('ContactEditPage',  {
+        contact: result
+      });
+    })
+    .catch((error: any) => {
+      this.toast.create({ message: error.error }).present();
+    });
   }
 
 }
