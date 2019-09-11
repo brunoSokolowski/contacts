@@ -44,6 +44,16 @@ export class ContactsListPage {
   .catch((error: any) => {
     this.toast.create({ message: error.error }).present();
   });
-}
+  }
+
+  deleteContact(contact: any) {
+  this.contactsProvider.destroyContact(contact.id)
+  .then((result: any) => {
+    this.toast.create({ message: 'Excluído!' , duration: 3000}).present();
+  })
+  .catch((error: any) => {
+    this.toast.create({ message: error.error }).present();
+  });
+  }
 
 }
